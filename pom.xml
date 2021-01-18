@@ -9,14 +9,16 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ru.ekaripov</groupId>
-	<artifactId>contacts-db</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>contactsdb</artifactId>
+	<version>0.0.1</version>
 	<packaging>war</packaging>
-	<name>contacts-db</name>
+	<name>contactsdb</name>
 	<description>Contacts database</description>
 
 	<properties>
 		<java.version>15</java.version>
+		<liquibase.version>4.2.2</liquibase.version>
+		<postgresql.version>42.2.18</postgresql.version>
 	</properties>
 
 	<dependencies>
@@ -41,6 +43,7 @@
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
+			<version>${postgresql.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -57,6 +60,16 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>${liquibase.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-maven-plugin</artifactId>
+			<version>${liquibase.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -64,6 +77,16 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>${liquibase.version}</version>
+				<configuration>
+					<propertyFile>src/main/resources/db/liquibase.yaml</propertyFile>
+					<propertyFileWillOverride>true</propertyFileWillOverride>
+					<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

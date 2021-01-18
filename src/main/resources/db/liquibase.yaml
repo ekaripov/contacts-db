@@ -1,0 +1,5 @@
+driver: org.postgresql.Driver
+url: jdbc:postgresql://10.10.10.84:5432/contactsdb
+username: lb_user
+password: CfvsqGhjcnjq21
+changeLogFile: src/main/resources/db/changelog/changelog-master.yaml

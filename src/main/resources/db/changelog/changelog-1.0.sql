@@ -17,7 +17,7 @@ CREATE TABLE authorities (
 	authority character varying(64) NOT NULL,
 	username character varying(50) NOT NULL
 );
-CREATE UNIQUE INDEX ix_authorities ON authorities (FK_users_username,authorities);
+CREATE UNIQUE INDEX ix_authorities ON authorities (username,authority);
 CREATE TABLE users (
 	username character varying(50) NOT NULL,
 	fullname character varying(64) NOT NULL,
@@ -40,8 +40,8 @@ CREATE TABLE person (
 	photo_id serial,
 	category_id serial NOT NULL
 );
-ALTER TABLE person ADD CONSTRAINT ix_contacts_primary PRIMARY KEY(id);
-CREATE UNIQUE INDEX ix_person_photo ON person (id,fk_photos_id);
+ALTER TABLE person ADD CONSTRAINT ix_person_primary PRIMARY KEY(id);
+CREATE UNIQUE INDEX ix_person_photo ON person (id,photo_id);
 CREATE TABLE contacts (
 	id serial NOT NULL,
 	text character varying(64) NOT NULL,
@@ -88,7 +88,7 @@ CREATE UNIQUE INDEX ix_tags_id ON tags (person_id);
 ALTER TABLE authorities ADD CONSTRAINT fk_authorities_users FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE person ADD CONSTRAINT fk_photos_person FOREIGN KEY (photo_id) REFERENCES photos(id) ON DELETE SET NULL ON UPDATE CASCADE;
 ALTER TABLE person ADD CONSTRAINT fk_category_person FOREIGN KEY (category_id) REFERENCES person_category(id) ON DELETE SET NULL ON UPDATE CASCADE;
-ALTER TABLE contacts ADD CONSTRAINT fk_cotact_type FOREIGN KEY (type_id) REFERENCES contact_type(id) ON DELETE NO ACTION ON UPDATE CASCADE;
+ALTER TABLE contacts ADD CONSTRAINT fk_contact_type FOREIGN KEY (type_id) REFERENCES contact_type(id) ON DELETE NO ACTION ON UPDATE CASCADE;
 ALTER TABLE contacts ADD CONSTRAINT fk_person_contacts FOREIGN KEY (person_id) REFERENCES person(id) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE event_types ADD CONSTRAINT fk_history_event_types FOREIGN KEY (history_id) REFERENCES history_types(id) ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE events ADD CONSTRAINT fk_event_type FOREIGN KEY (type_id) REFERENCES event_types(id) ON DELETE CASCADE ON UPDATE CASCADE;
