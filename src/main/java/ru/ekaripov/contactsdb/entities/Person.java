@@ -31,7 +31,8 @@ public class Person {
     private Date deleted;
     @Column
     private String comment;
-
     @ManyToOne
     private PersonCategory personCategory;
+    @OneToOne
+    private Photo photo;
 }
