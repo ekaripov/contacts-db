@@ -51,6 +51,11 @@
 			<artifactId>liquibase-maven-plugin</artifactId>
 			<version>${liquibase.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -64,9 +69,9 @@
 				<artifactId>liquibase-maven-plugin</artifactId>
 				<version>${liquibase.version}</version>
 				<configuration>
-					<propertyFile>src/main/resources/db/liquibase.yaml</propertyFile>
 					<propertyFileWillOverride>true</propertyFileWillOverride>
 					<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+					<propertyFile>src/main/resources/db/liquibase.yaml</propertyFile>
 				</configuration>
 			</plugin>
 		</plugins>
