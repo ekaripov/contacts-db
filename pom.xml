@@ -16,7 +16,7 @@
 	<description>Contacts database</description>
 
 	<properties>
-		<java.version>15</java.version>
+		<java.version>11</java.version>
 		<liquibase.version>4.2.2</liquibase.version>
 		<postgresql.version>42.2.18</postgresql.version>
 	</properties>
@@ -51,6 +51,12 @@
 			<artifactId>liquibase-maven-plugin</artifactId>
 			<version>${liquibase.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.12</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -64,9 +70,9 @@
 				<artifactId>liquibase-maven-plugin</artifactId>
 				<version>${liquibase.version}</version>
 				<configuration>
-					<propertyFile>src/main/resources/db/liquibase.yaml</propertyFile>
 					<propertyFileWillOverride>true</propertyFileWillOverride>
 					<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+					<propertyFile>src/main/resources/db/liquibase.yaml</propertyFile>
 				</configuration>
 			</plugin>
 		</plugins>

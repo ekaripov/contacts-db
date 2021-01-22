@@ -1,0 +1,74 @@
+#databaseChangeLog:
+#  - changeSet:
+#      id: 1
+#      author: sgream
+#      changes:
+#        - createTable:
+#            tableName: note
+#            columns:
+#              - column:
+#                  name: note_id
+#                  type: int
+#                  autoIncrement: true
+#                  constraints:
+#                    - primaryKeyName: note_id_pk
+#                    - primaryKey: true
+#                    - nullable: false
+#              - column:
+#                  name: note_title
+#                  type: varchar(1023)
+#              - column:
+#                  name: note_content
+#                  type: text
+
+databaseChangeLog:
+  - changeSet:
+      id:
+      author: dshishkin
+      changes:
+        - createTable:
+
+    id: 2
+    author: dshishkin
+    changes:
+      - createTable:
+          tableName: photos
+          columns:
+            - column:
+                name: id
+                type: int
+                autoIncrement: true
+                constraints:
+                  primaryKey: true
+                  nullable: false
+            - column:
+                name: image
+                type: byte
+                constraints:
+                  nullable: false
+      - createTable:
+          tableName: person_category
+          columns:
+            - column:
+                name: id
+                type: serial
+                autoIncrement: true
+                constraints:
+                  primaryKey: true
+                  nullable: false
+            - column:
+                name: title
+                type: varchar(50)
+                constraints:
+                  nullable: false
+      - createTable:
+          tableManame: contact_type
+          columns:
+            - column:
+                name: id
+                type: serial
+                autoIncrement: true
+                constraints:
+                  primaryKey: true
+                  nullable: false
+

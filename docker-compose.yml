@@ -1,0 +1,22 @@
+# Docker-compose file that creates postgres container for db
+# должен быть предварительно установлен докер
+# запускается путем написания в терминале в этой папке команды: docker-compose up
+
+version: '2'
+
+services:
+  postgres:
+    image: postgres:10
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    command: postgres -c shared_buffers=512MB -c effective_cache_size=1536MB -c work_mem=2621kB -c maintenance_work_mem=128MB
+    shm_size: '1gb'
+
+volumes:
+  postgres:
