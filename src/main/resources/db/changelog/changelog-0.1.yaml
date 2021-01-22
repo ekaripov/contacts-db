@@ -1,0 +1,111 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: dshishkin
+      changes:
+        - createTable:
+            tableName: history_type
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    - primaryKey: true
+                    - nullable: false
+              - column:
+                  name: title
+                  type: varchar(50)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: show_in_list
+                  type: boolean
+                  constraints:
+                    - nullable: false
+        - createTable:
+            tableName: history
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    - primaryKey: true
+                    - nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: person_id
+                  type: bigint
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: type_id
+                  type: bigint
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: description
+                  type: varchar(250)
+              - column:
+                  name: history_date
+                  type: date
+                  constraints:
+                    - nullable: false
+        - createTable:
+            tableName: event_types
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    - primaryKey: true
+                    - nullable: false
+              - column:
+                  name: title
+                  type: varchar(50)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: show_in_list
+                  type: boolean
+                  constraints:
+                    - nullable: false
+        - createTable:
+            tableName: events
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    - primaryKey: true
+                    - nullable: false
+              - column:
+                  name: person_id
+                  type: bigint
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: description
+                  type: varchar(250)
+              - column:
+                  name: event_date
+                  type: date
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: type_id
+                  type: bigint
+                  constraints:
+                    - nullable: false
