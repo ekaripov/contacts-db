@@ -14,18 +14,20 @@ databaseChangeLog:
                     - primaryKey: true
                     - nullable: false
               - column:
-                  name: contact_text
-                  type: varchar(45)
-              - column:
-                  name: id_contact_type
-                  type: bigint
+                  name: text
+                  type: varchar(50)
                   constraints:
                     - nullable: false
               - column:
                   name: comment
-                  type: varchar(45)
+                  type: varchar(250)
               - column:
-                  name: id_person
+                  name: type_id
+                  type: bigint
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: person_id
                   type: bigint
                   constraints:
                     - nullable: false
@@ -40,8 +42,10 @@ databaseChangeLog:
                     - primaryKey: true
                     - nullable: false
               - column:
-                  name: contact_type_name
-                  type: varchar(45)
+                  name: title
+                  type: varchar(50)
+                  constraints:
+                    - nullable: false
         - createTable:
             tableName: authorities
             columns:
@@ -55,6 +59,8 @@ databaseChangeLog:
               - column:
                   name: authority
                   type: varchar(45)
+                  constraints:
+                    - nullable: false
               - column:
                   name: user_id
                   type: bigint
@@ -72,12 +78,21 @@ databaseChangeLog:
                     - nullable: false
               - column:
                   name: username
-                  type: varchar(45)
+                  type: varchar(50)
+                  constraints:
+                    - nullable: false
               - column:
-                  name: user_fullname
-                  type: varchar(45)
+                  name: fullname
+                  type: varchar(50)
+                  constraints:
+                    - nullable: false
               - column:
-                  name: id_user_role
-                  type: bigint
+                  name: password
+                  type: varchar(50)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: enabled
+                  type: boolean
                   constraints:
                     - nullable: false
