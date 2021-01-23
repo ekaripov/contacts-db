@@ -1,21 +1,29 @@
 package ru.ekaripov.contactsdb.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lombok.Data;
+
+import javax.persistence.*;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
+@Data
 public class User {
     @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    @Column(unique = true)
-    private String username;
-    @Column(nullable = false)
-    private String fullname;
-    @Column(nullable = false)
+
+    @Column(name = "username",
+            unique = true,
+            nullable = false)
+    private String userName;
+
+    @Column(name = "fullname", nullable = false)
+    private String fullName;
+
+    @Column(name = "password", nullable = false)
     private String password;
-    @Column(nullable = false)
+
+    @Column(name = "enabled", nullable = false)
     private boolean enabled;
 }
