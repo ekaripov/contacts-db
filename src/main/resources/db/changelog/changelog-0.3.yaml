@@ -1,0 +1,87 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: ekaripov
+      changes:
+        - createTable:
+            tableName: photos
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: image
+                  type: varbinary
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: person_category
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: person
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar(50)
+              - column:
+                  name: middle_name
+                  type: varchar(50)
+              - column:
+                  name: last_name
+                  type: varchar(50)
+              - column:
+                  name: date_of_birth
+                  type: date
+              - column:
+                  name: organization
+                  type: varchar(250)
+              - column:
+                  name: position
+                  type: varchar(250)
+              - column:
+                  name: created
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: deleted
+                  type: timestamp
+              - column:
+                  name: comment
+                  type: varchar(250)
+              - column:
+                  name: photo_id
+                  type: bigint
+              - column:
+                  name: category_id
+                  type: bigint
+                  constraints:
+                    nullable: false
