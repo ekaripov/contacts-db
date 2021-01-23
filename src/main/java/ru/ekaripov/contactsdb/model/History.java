@@ -2,7 +2,6 @@ package ru.ekaripov.contactsdb.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.ekaripov.contactsdb.entities.HistoryType;
 import ru.ekaripov.contactsdb.entities.Person;
 import ru.ekaripov.contactsdb.entities.User;
 
@@ -27,8 +26,8 @@ public class History {
     @Column(name = "description")
     private String description;
 
-    @Column(nullable = false)
-    private Date historydate;
+    @Column(name = "history_date")
+    private Date historyDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
