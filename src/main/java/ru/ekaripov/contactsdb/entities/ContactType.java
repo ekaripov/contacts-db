@@ -1,15 +1,18 @@
 package ru.ekaripov.contactsdb.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import lombok.Data;
+
+import javax.persistence.*;
 
 @Entity
+@Table(name = "contact_type")
+@Data
 public class ContactType {
     @Id
-    @GeneratedValue
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    @Column(nullable = false)
+
+    @Column(name = "title", nullable = false)
     private String title;
 }
