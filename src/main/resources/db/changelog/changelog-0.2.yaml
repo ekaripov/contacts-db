@@ -1,0 +1,83 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: savchigor
+      changes:
+        - createTable:
+            tableName: contacts
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    - primaryKey: true
+                    - nullable: false
+              - column:
+                  name: contact_text
+                  type: varchar(45)
+              - column:
+                  name: id_contact_type
+                  type: bigint
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: comment
+                  type: varchar(45)
+              - column:
+                  name: id_person
+                  type: bigint
+                  constraints:
+                    - nullable: false
+        - createTable:
+            tableName: contact_type
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    - primaryKey: true
+                    - nullable: false
+              - column:
+                  name: contact_type_name
+                  type: varchar(45)
+        - createTable:
+            tableName: authorities
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    - primaryKey: true
+                    - nullable: false
+              - column:
+                  name: authority
+                  type: varchar(45)
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    - nullable: false
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    - primaryKey: true
+                    - nullable: false
+              - column:
+                  name: username
+                  type: varchar(45)
+              - column:
+                  name: user_fullname
+                  type: varchar(45)
+              - column:
+                  name: id_user_role
+                  type: bigint
+                  constraints:
+                    - nullable: false
