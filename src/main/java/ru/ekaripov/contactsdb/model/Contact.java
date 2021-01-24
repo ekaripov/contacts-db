@@ -1,6 +1,7 @@
-package ru.ekaripov.contactsdb.entities;
+package ru.ekaripov.contactsdb.model;
 
 import lombok.Data;
+import ru.ekaripov.contactsdb.entities.Person;
 
 import javax.persistence.*;
 
@@ -19,11 +20,11 @@ public class Contact {
     @Column(name = "comment")
     private String comment;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "type_id")
     private ContactType contactType;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "person_id")
     private Person person;
 }
