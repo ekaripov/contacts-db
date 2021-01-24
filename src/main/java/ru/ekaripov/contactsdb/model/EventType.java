@@ -25,6 +25,9 @@ public class EventType {
     @Column(name = "title")
     private String title;
 
+    @Column(name = "show_in_list")
+    private boolean showInList;
+
     @OneToOne
     private HistoryType historyType;
 
