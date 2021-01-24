@@ -35,7 +35,7 @@ public class HistoryDtoConverter implements EntityDtoConverter<History, HistoryD
 
     @Override
     public History convertFromDto(HistoryDto dto) {
-        return null;
+        throw new UnsupportedOperationException("Converted is not supported");
     }
 
     /**
