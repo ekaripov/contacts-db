@@ -1,5 +1,6 @@
 package ru.ekaripov.contactsdb.model;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.ekaripov.contactsdb.entities.Person;
@@ -18,6 +19,7 @@ import java.util.Date;
 @Entity
 @Data
 @NoArgsConstructor
+@Builder
 public class History {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
