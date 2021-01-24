@@ -31,15 +31,15 @@ public class History {
     @Column(name = "history_date")
     private Date historyDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "person_id")
     private Person person;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "history_type_id")
     private HistoryType historyType;
 }
