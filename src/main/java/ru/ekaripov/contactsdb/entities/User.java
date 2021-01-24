@@ -9,16 +9,15 @@ import javax.persistence.*;
 @Data
 public class User {
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(name = "username",
             unique = true,
             nullable = false)
-    private String userName;
+    private String username;
 
-    @Column(name = "fullname", nullable = false)
+    @Column(name = "full_name", nullable = false)
     private String fullName;
 
     @Column(name = "password", nullable = false)
