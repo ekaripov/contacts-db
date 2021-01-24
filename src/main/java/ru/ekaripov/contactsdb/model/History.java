@@ -1,8 +1,11 @@
 package ru.ekaripov.contactsdb.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import ru.ekaripov.contactsdb.entities.Person;
 import ru.ekaripov.contactsdb.entities.User;
 
@@ -17,9 +20,11 @@ import javax.persistence.ManyToOne;
 import java.util.Date;
 
 @Entity
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class History {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
