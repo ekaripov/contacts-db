@@ -1,20 +1,29 @@
 package ru.ekaripov.contactsdb.entities;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.Data;
 
 import javax.persistence.*;
 
 @Entity
+@Table(name = "contacts")
+@Data
 public class Contact {
     @Id
-    @GeneratedValue
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    @Column(nullable = false)
+
+    @Column(name = "text", nullable = false)
     private String text;
-    @Column
+
+    @Column(name = "comment")
     private String comment;
-    @ManyToOne
+
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "type_id")
     private ContactType contactType;
-    @ManyToOne
+
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "person_id")
     private Person person;
 }
