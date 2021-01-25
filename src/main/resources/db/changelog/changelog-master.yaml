@@ -5,5 +5,5 @@ databaseChangeLog:
       file: classpath:db/changelog/changelog-0.2.yaml
   - include:
       file: classpath:db/changelog//changelog-0.3.yaml
-  - include:
-      file: classpath:db/changelog/changelog-1.1.yaml
+#  - include:
+#      file: classpath:db/changelog/changelog-1.1.yaml
