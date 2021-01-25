@@ -4,7 +4,7 @@ databaseChangeLog:
       author: ekaripov
       changes:
         - createTable:
-            tableName: photos
+            tableName: photo
             columns:
               - column:
                   name: id
@@ -85,3 +85,23 @@ databaseChangeLog:
                   type: bigint
                   constraints:
                     nullable: false
+        - createTable:
+            tableName: tag
+            columns:
+            - column:
+                name: id
+                type: bigint
+                autoIncrement: true
+                constraints:
+                  primaryKey: true
+                  nullable: false
+            - column:
+                name: person_id
+                type: bigint
+                constraints:
+                  nullable: false
+            - column:
+                name: tag
+                type: varchar(50)
+                constraints:
+                  nullable: false
