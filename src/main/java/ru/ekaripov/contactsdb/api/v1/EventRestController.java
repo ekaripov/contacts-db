@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.ekaripov.contactsdb.model.Event;
 import ru.ekaripov.contactsdb.model.converter.impl.EventDtoConverter;
 import ru.ekaripov.contactsdb.model.dto.EventDto;
 import ru.ekaripov.contactsdb.service.interf.EventService;
@@ -21,7 +22,8 @@ public class EventRestController {
 
     @GetMapping("/getAll")
     public ResponseEntity<List<EventDto>> getAllEvent() {
-        List<EventDto> eventDtoList = eventDtoConverter.convertToDto(eventService.getAllEvents());
+        List<Event> allEvents = eventService.getAllEvents();
+        List<EventDto> eventDtoList = eventDtoConverter.convertToDto(allEvents);
         return ResponseEntity.ok(eventDtoList);
     }
 }

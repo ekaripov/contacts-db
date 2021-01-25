@@ -25,7 +25,6 @@ public class HistoryRestController {
     public ResponseEntity<List<HistoryDto>> getAllHistoryRecords() {
         List<History> allHistoryRecords = historyService.getAllHistoryRecords();
         List<HistoryDto> historyDtos = converter.convertToDto(allHistoryRecords);
-
         return ResponseEntity.ok(historyDtos);
     }
 }
