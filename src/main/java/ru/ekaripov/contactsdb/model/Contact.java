@@ -1,7 +1,6 @@
 package ru.ekaripov.contactsdb.model;
 
 import lombok.Data;
-import ru.ekaripov.contactsdb.entities.Person;
 
 import javax.persistence.*;
 

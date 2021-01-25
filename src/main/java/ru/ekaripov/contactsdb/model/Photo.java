@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "photos")
+@Table(name = "photo")
 @Data
 @NoArgsConstructor
 public class Photo {
@@ -17,6 +17,6 @@ public class Photo {
     @Column(name = "image", nullable = false)
     private byte[] image;
 
-    @OneToOne(mappedBy = "photos")
+    @OneToOne(mappedBy = "photo")
     private Person person;
 }

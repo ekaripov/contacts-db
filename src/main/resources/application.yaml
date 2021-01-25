@@ -1,0 +1,22 @@
+#spring.liquibase.enabled=true
+#spring.liquibase.change-log=classpath:db/changelog/changelog-master.yaml
+#spring.application.name=Contacts DB
+#spring.datasource.url=jdbc:postgresql://localhost:5432/contacts_db
+#spring.datasource.driver-class-name=org.postgresql.Driver
+#spring.datasource.username=postgres
+#spring.datasource.password=postgres
+#spring.jpa.hibernate.ddl-auto=none
+spring:
+  application:
+    name: Contacts DB
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/changelog-master.yaml
+  datasource:
+    url: jdbc:postgresql://localhost:5432/contacts_db
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: none

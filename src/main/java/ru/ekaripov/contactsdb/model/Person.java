@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -28,7 +29,7 @@ public class Person {
 
     @Column(name = "date_of_birth")
     @Temporal(TemporalType.DATE)
-    private LocalDate dateOfBirth;
+    private Date dateOfBirth;
 
     @Column(name = "organization", length = 250)
     private String organization;
@@ -38,15 +39,15 @@ public class Person {
 
     @Column(name = "created", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDate created;
+    private Date created;
 
     @Column(name = "updated", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDate updated;
+    private Date updated;
 
     @Column(name = "deleted")
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDate deleted;
+    private Date deleted;
 
     @Column(name = "comment", length = 250)
     private String comment;

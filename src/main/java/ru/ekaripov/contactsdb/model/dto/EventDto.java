@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.ekaripov.contactsdb.entities.Person;
-import ru.ekaripov.contactsdb.entities.User;
+import ru.ekaripov.contactsdb.model.Person;
+import ru.ekaripov.contactsdb.model.User;
 import ru.ekaripov.contactsdb.model.EventType;
 
 import java.util.Date;
