@@ -1,4 +1,6 @@
-package ru.ekaripov.contactsdb.entities;
+package ru.ekaripov.contactsdb.model;
+
+import ru.ekaripov.contactsdb.model.Person;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

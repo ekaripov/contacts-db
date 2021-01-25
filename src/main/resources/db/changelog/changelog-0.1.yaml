@@ -72,8 +72,8 @@ databaseChangeLog:
                   constraints:
                     - nullable: false
               - column:
-                  name: show_in_list
-                  type: boolean
+                  name: history_type_id
+                  type: bigint
                   constraints:
                     - nullable: false
         - createTable:
