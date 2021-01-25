@@ -25,4 +25,9 @@ public class User {
 
     @Column(name = "enabled", nullable = false)
     private boolean enabled;
+
+    @Column(name = "authority")
+    @Enumerated(EnumType.STRING)
+    private Authorities authorities;
+
 }
