@@ -1,7 +1,11 @@
 package ru.ekaripov.contactsdb.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import ru.ekaripov.contactsdb.entities.Person;
 import ru.ekaripov.contactsdb.entities.User;
 
@@ -16,7 +20,10 @@ import javax.persistence.ManyToOne;
 import java.util.Date;
 
 @Entity
-@Data
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class History {
     @Id
@@ -29,15 +36,15 @@ public class History {
     @Column(name = "history_date")
     private Date historyDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "person_id")
     private Person person;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "history_type_id")
     private HistoryType historyType;
 }
