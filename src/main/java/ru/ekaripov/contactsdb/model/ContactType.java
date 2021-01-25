@@ -1,4 +1,4 @@
-package ru.ekaripov.contactsdb.entities;
+package ru.ekaripov.contactsdb.model;
 
 import lombok.Data;
 
@@ -16,6 +16,6 @@ public class ContactType {
     @Column(name = "title", nullable = false)
     private String title;
 
-    @OneToMany(mappedBy = "contactType", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "contactType", orphanRemoval = true)
     private Set<Contact> contact;
 }

@@ -1,4 +1,4 @@
-package ru.ekaripov.contactsdb.entities;
+package ru.ekaripov.contactsdb.model;
 
 import lombok.Data;
 
