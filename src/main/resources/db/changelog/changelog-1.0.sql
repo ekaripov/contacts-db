@@ -1,3 +1,5 @@
+-- после написания ямлов удалим
+
 CREATE TABLE photos (
 	id serial NOT NULL,
 	image bytea NOT NULL
@@ -89,6 +91,7 @@ CREATE TABLE tags (
 );
 ALTER TABLE tags ADD CONSTRAINT ix_tags_primary PRIMARY KEY(id);
 CREATE UNIQUE INDEX ix_tags_id ON tags (person_id);
+
 ALTER TABLE authorities ADD CONSTRAINT fk_authorities_users FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE person ADD CONSTRAINT fk_photos_person FOREIGN KEY (photo_id) REFERENCES photos(id) ON DELETE SET NULL ON UPDATE CASCADE;
 ALTER TABLE person ADD CONSTRAINT fk_category_person FOREIGN KEY (category_id) REFERENCES person_category(id) ON DELETE SET NULL ON UPDATE CASCADE;
