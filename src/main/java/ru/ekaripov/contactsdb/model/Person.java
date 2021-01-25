@@ -4,44 +4,61 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Table(name = "person")
 @Data
 @NoArgsConstructor
-@Table(name = "person")
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(name = "first_name")
-    private String firstName;
+    @Column(name = "first_name", length = 50)
+    private String firstsName;
 
-    @Column(name = "middle_name")
+    @Column(name = "middle_name", length = 50)
     private String middleName;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", length = 50)
     private String lastName;
 
     @Column(name = "date_of_birth")
     @Temporal(TemporalType.DATE)
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
 
-    @Column
+    @Column(name = "organization", length = 250)
     private String organization;
-    @Column
+
+    @Column(name = "position", length = 250)
     private String position;
-    @Column(nullable = false)
-    private Date created;
-    @Column(nullable = false)
-    private Date updated;
-    @Column
-    private Date deleted;
-    @Column
+
+    @Column(name = "created", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDate created;
+
+    @Column(name = "updated", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDate updated;
+
+    @Column(name = "deleted")
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDate deleted;
+
+    @Column(name = "comment", length = 250)
     private String comment;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
     private PersonCategory personCategory;
-    @OneToOne
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "photo_id")
     private Photo photo;
+
+    @OneToMany(mappedBy = "person",orphanRemoval = true)
+    private List<Tag> tagList = new ArrayList<>();
 }

@@ -1,18 +1,23 @@
 package ru.ekaripov.contactsdb.model;
 
-import ru.ekaripov.contactsdb.model.Person;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "tags")
+@Data
+@NoArgsConstructor
 public class Tag {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "person_id")
     private Person person;
-    @Column
+
+    @Column(name = "title", nullable = false, length = 50)
     private String title;
 }
