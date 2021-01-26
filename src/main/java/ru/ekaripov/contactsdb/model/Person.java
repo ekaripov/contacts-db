@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -17,38 +18,34 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(name = "first_name", length = 50)
+    @Column(name = "first_name")
     private String firstsName;
 
-    @Column(name = "middle_name", length = 50)
+    @Column(name = "middle_name")
     private String middleName;
 
-    @Column(name = "last_name", length = 50)
+    @Column(name = "last_name")
     private String lastName;
 
     @Column(name = "date_of_birth")
-    @Temporal(TemporalType.DATE)
     private LocalDate dateOfBirth;
 
-    @Column(name = "organization", length = 250)
+    @Column(name = "organization")
     private String organization;
 
-    @Column(name = "position", length = 250)
+    @Column(name = "position")
     private String position;
 
-    @Column(name = "created", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created")
     private LocalDate created;
 
-    @Column(name = "updated", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "updated")
     private LocalDate updated;
 
     @Column(name = "deleted")
-    @Temporal(TemporalType.TIMESTAMP)
     private LocalDate deleted;
 
-    @Column(name = "comment", length = 250)
+    @Column(name = "comment")
     private String comment;
 
     @ManyToOne(fetch = FetchType.LAZY)

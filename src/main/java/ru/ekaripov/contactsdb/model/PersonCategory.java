@@ -19,6 +19,6 @@ public class PersonCategory {
     @Column(name = "title", nullable = false, length = 50)
     private String title;
 
-    @OneToMany(mappedBy = "person_category")
+    @OneToMany(mappedBy = "personCategory")
     private List<Person> personList = new ArrayList<>();
 }
