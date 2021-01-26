@@ -1,5 +1,6 @@
 package ru.ekaripov.contactsdb.api.v1;
 
+import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,7 @@ public class UserRestController {
     private final UserDtoConverter converter;
 
     @GetMapping("/getAll")
+    @ApiOperation(value = "Метод возвращает всех зарегестрированных пользователей")
     public ResponseEntity<List<UserDto>> getAllUsers() {
         List<User> allUsers = userService.getAllUsers();
         List<UserDto> allUserDto = converter.convertToDto(allUsers);

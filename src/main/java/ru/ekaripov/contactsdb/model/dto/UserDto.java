@@ -1,5 +1,6 @@
 package ru.ekaripov.contactsdb.model.dto;
 
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,6 +11,7 @@ import ru.ekaripov.contactsdb.model.Authorities;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ApiModel(description = "DTO сущности User")
 public class UserDto {
     private Long id;
 

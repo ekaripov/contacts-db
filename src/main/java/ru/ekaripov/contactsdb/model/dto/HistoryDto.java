@@ -1,5 +1,6 @@
 package ru.ekaripov.contactsdb.model.dto;
 
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ApiModel(description = "DTO для отображения журнала логирования")
 public class HistoryDto {
     private Long id;
     private String description;
