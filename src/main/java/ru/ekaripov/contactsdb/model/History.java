@@ -3,6 +3,7 @@ package ru.ekaripov.contactsdb.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -20,7 +21,7 @@ public class History {
     private String description;
 
     @Column(name = "history_date")
-    private Date historyDate;
+    private LocalDate historyDate;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

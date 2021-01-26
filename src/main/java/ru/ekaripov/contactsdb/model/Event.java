@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -17,7 +18,7 @@ public class Event {
     private Long id;
 
     @Column(name = "event_date")
-    private Date eventDate;
+    private LocalDate eventDate;
 
     @Column(name = "description")
     private String description;
