@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.ekaripov.contactsdb.model.Contact;
+import ru.ekaripov.contactsdb.model.converter.EntityDtoConverter;
+import ru.ekaripov.contactsdb.model.converter.impl.ContactDtoConverter;
+import ru.ekaripov.contactsdb.model.dto.ContactDto;
 import ru.ekaripov.contactsdb.service.interf.ContactService;
 
 import java.util.List;
@@ -16,10 +19,13 @@ import java.util.List;
 public class ContactRestController {
 
     private final ContactService contactService;
+    private final ContactDtoConverter converter;
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<Contact>> getAllContacts() {
+    public ResponseEntity<List<ContactDto>> getAllContacts() {
         List<Contact> allContacts = contactService.getAllContacts();
-        return ResponseEntity.ok(allContacts);
+        List<ContactDto> allContactDto = converter.convertToDto(allContacts);
+
+        return ResponseEntity.ok(allContactDto);
     }
 }

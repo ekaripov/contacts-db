@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.ekaripov.contactsdb.model.User;
+import ru.ekaripov.contactsdb.model.converter.impl.UserDtoConverter;
+import ru.ekaripov.contactsdb.model.dto.UserDto;
 import ru.ekaripov.contactsdb.service.interf.UserService;
 
 import java.util.List;
@@ -16,10 +18,12 @@ import java.util.List;
 public class UserRestController {
 
     private final UserService userService;
+    private final UserDtoConverter converter;
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<User>> getAllUsers() {
+    public ResponseEntity<List<UserDto>> getAllUsers() {
         List<User> allUsers = userService.getAllUsers();
-        return ResponseEntity.ok(allUsers);
+        List<UserDto> allUserDto = converter.convertToDto(allUsers);
+        return ResponseEntity.ok(allUserDto);
     }
 }
