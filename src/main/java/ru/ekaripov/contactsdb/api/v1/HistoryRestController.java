@@ -1,5 +1,8 @@
 package ru.ekaripov.contactsdb.api.v1;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +25,13 @@ public class HistoryRestController {
     private final HistoryDtoConverter converter;
 
     @GetMapping("/getAll")
+    @ApiOperation(value = "Метод возвращает все записи журнала логирования")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success|OK"),
+            @ApiResponse(code = 401, message = "You are not authorized!"),
+            @ApiResponse(code = 403, message = "Forbidden!!!"),
+            @ApiResponse(code = 404, message = "Not found!!!")
+    })
     public ResponseEntity<List<HistoryDto>> getAllHistoryRecords() {
         List<History> allHistoryRecords = historyService.getAllHistoryRecords();
         List<HistoryDto> historyDtos = converter.convertToDto(allHistoryRecords);
