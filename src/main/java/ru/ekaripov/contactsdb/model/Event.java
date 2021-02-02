@@ -4,8 +4,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name = "events")
@@ -17,10 +18,12 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(name = "event_date")
+    @Column(name = "event_date", nullable = false)
+    @NotBlank
     private LocalDate eventDate;
 
     @Column(name = "description")
+    @Size(max = 250)
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)

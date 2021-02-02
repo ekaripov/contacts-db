@@ -3,10 +3,12 @@ package ru.ekaripov.contactsdb.model;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
+@Table(name = "history")
 @Getter
 @Setter
 @Builder
@@ -18,9 +20,11 @@ public class History {
     private Long id;
 
     @Column(name = "description")
+    @Size(max = 250)
     private String description;
 
     @Column(name = "history_date")
+    @NotBlank
     private LocalDate historyDate;
 
     @ManyToOne

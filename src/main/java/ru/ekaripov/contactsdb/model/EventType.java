@@ -3,15 +3,11 @@ package ru.ekaripov.contactsdb.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import java.util.Set;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -22,15 +18,21 @@ public class EventType {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(name = "title")
+    @Column(name = "title", nullable = false)
+    @NotBlank
     private String title;
 
-    @Column(name = "show_in_list")
+    @Column(name = "show_in_list", nullable = false)
     private boolean showInList;
 
     @OneToOne
+    @JoinColumn(name = "history_type_id")
+    @NotEmpty
     private HistoryType historyType;
 
-    @OneToMany(mappedBy = "eventType", orphanRemoval = true)
-    private Set<Event> events;
+    @OneToMany(
+            mappedBy = "eventType",
+            orphanRemoval = true,
+            cascade = CascadeType.ALL)
+    private List<Event> events = new ArrayList<>();
 }

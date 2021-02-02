@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,8 +19,13 @@ public class PersonCategory {
     private Long id;
 
     @Column(name = "title", nullable = false, length = 50)
+    @NotBlank
+    @Size(max = 50)
     private String title;
 
-    @OneToMany(mappedBy = "personCategory")
+    @OneToMany(
+            mappedBy = "personCategory",
+            orphanRemoval = true,
+            cascade = CascadeType.ALL)
     private List<Person> personList = new ArrayList<>();
 }

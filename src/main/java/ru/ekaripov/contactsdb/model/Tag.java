@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "tags")
@@ -19,5 +21,7 @@ public class Tag {
     private Person person;
 
     @Column(name = "title", nullable = false, length = 50)
+    @NotBlank
+    @Size(max = 50)
     private String title;
 }
