@@ -32,7 +32,6 @@ public class Person {
     private String lastName;
 
     @Column(name = "date_of_birth")
-    @Temporal(TemporalType.DATE)
     private LocalDate dateOfBirth;
 
     @Column(name = "organization")
@@ -44,17 +43,14 @@ public class Person {
     private String position;
 
     @Column(name = "created")
-    @Temporal(TemporalType.TIMESTAMP)
     @NotBlank
     private LocalDate created;
 
     @Column(name = "updated")
-    @Temporal(TemporalType.TIMESTAMP)
     @NotBlank
     private LocalDate updated;
 
     @Column(name = "deleted")
-    @Temporal(TemporalType.TIMESTAMP)
     private LocalDate deleted;
 
     @Column(name = "comment")
