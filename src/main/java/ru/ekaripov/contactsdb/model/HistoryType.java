@@ -3,15 +3,14 @@ package ru.ekaripov.contactsdb.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.Set;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Table(name = "history_type")
 @Data
 @NoArgsConstructor
 public class HistoryType {
@@ -19,12 +18,18 @@ public class HistoryType {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(name = "title")
+    @Column(name = "title", nullable = false)
+    @NotBlank
+    @Size(max = 50)
     private String title;
 
-    @Column(name = "show_in_list")
+    @Column(name = "show_in_list", nullable = false)
+    @NotBlank
     private boolean showInList;
 
-    @OneToMany(mappedBy = "historyType", orphanRemoval = true)
-    private Set<History> historySet;
+    @OneToMany(
+            mappedBy = "historyType",
+            orphanRemoval = true,
+            cascade = CascadeType.ALL)
+    private List<History> historySet = new ArrayList<>();
 }
