@@ -64,7 +64,7 @@ databaseChangeLog:
             constraintName: fk_events_person
             baseTableName: events
             baseColumnNames: person_id
-            referencedTableName: events
+            referencedTableName: person
             referencedColumnNames: id
             onDelete: CASCADE
             onUpdate: CASCADE
