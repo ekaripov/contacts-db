@@ -27,6 +27,7 @@ public class ContactTypeServiceImpl implements ContactTypeService {
     @Transactional
     public ContactType updateContactType(ContactType contactType) {
         ContactType editContactType = contactTypeRepository.findById(contactType.getId()).orElseThrow(DatabaseEntryNotFoundException::new);
+        editContactType.setTitle(contactType.getTitle());
         contactTypeRepository.save(editContactType);
         return editContactType;
     }

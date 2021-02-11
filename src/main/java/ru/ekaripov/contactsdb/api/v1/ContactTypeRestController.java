@@ -21,7 +21,7 @@ public class ContactTypeRestController {
     private final ContactTypeService contactTypeService;
     private final ContactTypeDtoConverter converter;
 
-    @GetMapping("/getAll")
+    @GetMapping("")
     public ResponseEntity<List<ContactTypeDto>> getAllContactTypes() {
         List<ContactType> contactTypeList = contactTypeService.getAllContactTypes();
         List<ContactTypeDto> contactTypeDtoList = converter.convertToDto(contactTypeList);
