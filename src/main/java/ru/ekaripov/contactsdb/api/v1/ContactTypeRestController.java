@@ -21,7 +21,7 @@ public class ContactTypeRestController {
     private final ContactTypeService contactTypeService;
     private final ContactTypeDtoConverter converter;
 
-    @GetMapping("")
+    @GetMapping
     public ResponseEntity<List<ContactTypeDto>> getAllContactTypes() {
         List<ContactType> contactTypeList = contactTypeService.getAllContactTypes();
         List<ContactTypeDto> contactTypeDtoList = converter.convertToDto(contactTypeList);
@@ -38,13 +38,15 @@ public class ContactTypeRestController {
 
     @PostMapping
     public ResponseEntity<ContactTypeDto> addContactType(@RequestBody ContactType contactType){
-        return ResponseEntity.ok(converter.convertToDto(contactTypeService.addContactType(contactType)));
+        ContactType contactTypeNew = contactTypeService.addContactType(contactType);
+        ContactTypeDto contactTypeDto = converter.convertToDto(contactTypeNew);
+        return ResponseEntity.ok(contactTypeDto);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteContactTypeById(@PathVariable Long id) {
         contactTypeService.deleteById(id);
-        return new ResponseEntity<Void>(HttpStatus.OK);
+        return ResponseEntity.ok().build();
     }
 
     @PutMapping
