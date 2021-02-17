@@ -27,7 +27,7 @@ public class ContactServiceImpl implements ContactService {
     @Override
     @Transactional
     public Contact updateContact(Contact contact) {
-        if(contact.getId().equals(null)) throw new IdNotDefinedException();
+        if(contact.getId() == null) throw new IdNotDefinedException();
         Contact editContact = contactRepository.findById(contact.getId()).orElseThrow(DatabaseEntryNotFoundException::new);
         editContact.setContactType(contact.getContactType());
         editContact.setText(contact.getText());
