@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.ekaripov.contactsdb.exceptions.DatabaseEntryNotFoundException;
+import ru.ekaripov.contactsdb.exceptions.IdNotDefinedException;
 import ru.ekaripov.contactsdb.model.ContactType;
 import ru.ekaripov.contactsdb.repository.ContactTypeRepository;
 import ru.ekaripov.contactsdb.service.interf.ContactTypeService;
@@ -26,6 +27,7 @@ public class ContactTypeServiceImpl implements ContactTypeService {
     @Override
     @Transactional
     public ContactType updateContactType(ContactType contactType) {
+        if(contactType.getId() == null) throw new IdNotDefinedException();
         ContactType editContactType = contactTypeRepository.findById(contactType.getId()).orElseThrow(DatabaseEntryNotFoundException::new);
         editContactType.setTitle(contactType.getTitle());
         contactTypeRepository.save(editContactType);
@@ -40,6 +42,7 @@ public class ContactTypeServiceImpl implements ContactTypeService {
     @Override
     @Transactional
     public void deleteById(Long id) {
+        contactTypeRepository.findById(id).orElseThrow(DatabaseEntryNotFoundException::new);
         contactTypeRepository.deleteById(id);
     }
 

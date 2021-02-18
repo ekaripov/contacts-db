@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.ekaripov.contactsdb.exceptions.DatabaseEntryNotFoundException;
+import ru.ekaripov.contactsdb.exceptions.IdNotDefinedException;
 import ru.ekaripov.contactsdb.model.ContactType;
 import ru.ekaripov.contactsdb.model.converter.impl.ContactTypeDtoConverter;
 import ru.ekaripov.contactsdb.model.dto.ContactTypeDto;
@@ -37,7 +38,8 @@ public class ContactTypeRestController {
     }
 
     @PostMapping
-    public ResponseEntity<ContactTypeDto> addContactType(@RequestBody ContactType contactType){
+    public ResponseEntity<ContactTypeDto> addContactType(@RequestBody ContactType contactType) {
+        contactType.setId(null);
         ContactType contactTypeNew = contactTypeService.addContactType(contactType);
         ContactTypeDto contactTypeDto = converter.convertToDto(contactTypeNew);
         return ResponseEntity.ok(contactTypeDto);
@@ -45,8 +47,12 @@ public class ContactTypeRestController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteContactTypeById(@PathVariable Long id) {
-        contactTypeService.deleteById(id);
-        return ResponseEntity.ok().build();
+        try {
+            contactTypeService.deleteById(id);
+            return ResponseEntity.ok().build();
+        } catch (DatabaseEntryNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PutMapping
@@ -55,6 +61,8 @@ public class ContactTypeRestController {
             return ResponseEntity.ok(converter.convertToDto(contactTypeService.updateContactType(contactType)));
         } catch (DatabaseEntryNotFoundException entryNotFoundException) {
             return ResponseEntity.notFound().build();
+        } catch (IdNotDefinedException e) {
+            return ResponseEntity.badRequest().build();
         }
     }
 }
