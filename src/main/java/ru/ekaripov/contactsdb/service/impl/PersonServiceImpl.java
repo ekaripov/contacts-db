@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.ekaripov.contactsdb.exceptions.DatabaseEntryNotFoundException;
+import ru.ekaripov.contactsdb.exceptions.IdNotDefinedException;
 import ru.ekaripov.contactsdb.model.Person;
 import ru.ekaripov.contactsdb.repository.PersonRepository;
 import ru.ekaripov.contactsdb.service.interf.PersonService;
@@ -30,7 +31,17 @@ public class PersonServiceImpl implements PersonService {
     @Override
     @Transactional
     public Person updatePerson(Person person) {
-        person.setUpdated(LocalDate.now());
+        if(person.getId() == null) throw new IdNotDefinedException();
+        Person editPerson = repository.findById(person.getId()).orElseThrow(DatabaseEntryNotFoundException::new);
+        editPerson.setFirstName(person.getFirstName());
+        editPerson.setMiddleName(person.getMiddleName());
+        editPerson.setLastName(person.getLastName());
+        editPerson.setDateOfBirth(person.getDateOfBirth());
+        editPerson.setOrganization(person.getOrganization());
+        editPerson.setPosition(person.getPosition());
+        editPerson.setComment(person.getComment());
+        editPerson.setPersonCategory(person.getPersonCategory());
+        editPerson.setUpdated(LocalDate.now());
         return repository.save(person);
     }
 

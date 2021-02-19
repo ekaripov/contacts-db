@@ -19,6 +19,7 @@ public class PersonDtoConverter implements EntityDtoConverter<Person, PersonDto>
                 .dateOfBirth(entity.getDateOfBirth())
                 .organization(entity.getOrganization())
                 .position(entity.getPosition())
+                .categoryId(entity.getPersonCategory().getId())
                 .build();
     }
 
