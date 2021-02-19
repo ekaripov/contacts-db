@@ -19,4 +19,5 @@ public class PersonDto {
     LocalDate dateOfBirth;
     String organization;
     String position;
+    PersonCategoryDto personCategory;
 }

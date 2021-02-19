@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.List;
 
 public class PersonDtoConverter implements EntityDtoConverter<Person, PersonDto> {
+    PersonCategoryDtoConverter personCategoryDtoConverter;
     @Override
     public PersonDto convertToDto(Person entity) {
         return PersonDto.builder()
@@ -19,7 +20,7 @@ public class PersonDtoConverter implements EntityDtoConverter<Person, PersonDto>
                 .dateOfBirth(entity.getDateOfBirth())
                 .organization(entity.getOrganization())
                 .position(entity.getPosition())
-                .categoryId(entity.getPersonCategory().getId())
+                .personCategory(personCategoryDtoConverter.convertToDto(entity.getPersonCategory()))
                 .build();
     }
 
