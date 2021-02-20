@@ -11,6 +11,7 @@ import ru.ekaripov.contactsdb.model.dto.PersonDto;
 import ru.ekaripov.contactsdb.service.interf.PersonService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/person")
@@ -18,11 +19,6 @@ import java.util.List;
 public class PersonRestController {
     private final PersonService service;
     private final PersonDtoConverter converter;
-
-    @GetMapping
-    public ResponseEntity<List<PersonDto>> getAllPerson() {
-        return ResponseEntity.ok(converter.convertToDto(service.getAllPerson()));
-    }
 
     @GetMapping("/deleted")
     public ResponseEntity<List<PersonDto>> getAllDeletedPerson() {
@@ -37,8 +33,9 @@ public class PersonRestController {
     }
 
     @GetMapping
-    public ResponseEntity<List<PersonDto>> findBySearchString(@RequestParam(name = "s") String searchString) {
-        return ResponseEntity.ok(converter.convertToDto(service.findBySearchString(searchString)));
+    public ResponseEntity<List<PersonDto>> findBySearchString(@RequestParam(name = "s") Optional<String> searchString) {
+        return ResponseEntity.ok(searchString.map(s -> converter.convertToDto(service.findBySearchString(s)))
+                .orElseGet(() -> converter.convertToDto(service.getAllPerson())));
     }
 
     @PostMapping

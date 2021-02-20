@@ -11,6 +11,6 @@ import java.util.List;
 public interface PersonRepository extends JpaRepository<Person, Long> {
     List<Person> findByDeletedIsNull();
     List<Person> findByDeletedIsNotNull();
-    @Query("select p from Person p where (p.firstName like ?1) or (p.lastName like ?1) or (p.middleName like ?1)")
+    @Query("select p from Person p where (p.deleted isNull) and ((p.firstName like ?1) or (p.lastName like ?1) or (p.middleName like ?1))")
     List<Person> findBySearchString(String searchString);
 }
