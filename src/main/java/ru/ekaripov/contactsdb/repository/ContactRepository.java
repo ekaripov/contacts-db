@@ -9,5 +9,7 @@ import java.util.List;
 @Repository
 public interface ContactRepository extends JpaRepository<Contact, Long> {
 
-    List<Contact> getAllContactsByPersonId(Long id);
+    List<Contact> findByPersonId(Long personId);
+
+    List<Contact> findByContactTypeId(Long contactTypeId);
 }
