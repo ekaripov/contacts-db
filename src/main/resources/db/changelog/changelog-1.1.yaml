@@ -1,116 +1,104 @@
-#databaseChangeLog:
-#  - changeSet:
-#      id: insert-initial data
-#      author: ekaripov
-#      changes:
-#        - insert:
-#            columns:
-#              - column:
-#                  name: title
-#                  value: E-mail
-#            schemaName: public
-#            tableName: contact_type
-#        - insert:
-#            columns:
-#              - column:
-#                  name: title
-#                  value: Phone
-#            schemaName: public
-#            tableName: contact_type
-#        - insert:
-#            columns:
-#              - column:
-#                  name: title
-#                  value: Address
-#            schemaName: public
-#            tableName: contact_type
-#        - insert:
-#            columns:
-#              - column:
-#                  name: title
-#                  value: created
-#              - column:
-#                  name: show_in_list
-#                  value: true
-#            schemaName: public
-#            tableName: history_types
-#        - insert:
-#            columns:
-#              - column:
-#                  name: title
-#                  value: deleted
-#              - column:
-#                  name: show_in_list
-#                  value: true
-#            schemaName: public
-#            tableName: history_types
-#        - insert:
-#            columns:
-#              - column:
-#                  name: title
-#                  value: edited
-#              - column:
-#                  name: show_in_list
-#                  value: true
-#            schemaName: public
-#            tableName: history_types
-#        - insert:
-#            columns:
-#              - column:
-#                  name: title
-#                  value: birthday
-#              - column:
-#                  name: show_in_list
-#                  value: true
-#            schemaName: public
-#            tableName: history_types
-#        - insert:
-#            columns:
-#              - column:
-#                  name: title
-#                  value: incoming call
-#              - column:
-#                  name: show_in_list
-#                  value: true
-#            schemaName: public
-#            tableName: history_types
-#        - insert:
-#            columns:
-#              - column:
-#                  name: title
-#                  value: outgoing call
-#              - column:
-#                  name: show_in_list
-#                  value: true
-#            schemaName: public
-#            tableName: history_types
-#        - insert:
-#            columns:
-#              - column:
-#                  name: title
-#                  value: incoming email
-#              - column:
-#                  name: show_in_list
-#                  value: true
-#            schemaName: public
-#            tableName: history_types
-#        - insert:
-#            columns:
-#              - column:
-#                  name: title
-#                  value: outgoing email
-#              - column:
-#                  name: show_in_list
-#                  value: true
-#            schemaName: public
-#            tableName: history_types
-#        - insert:
-#            columns:
-#              - column:
-#                  name: title
-#                  value: personal appointment
-#              - column:
-#                  name: show_in_list
-#                  value: true
-#            schemaName: public
-#            tableName: history_types
+databaseChangeLog:
+  - changeSet:
+      id: insert-initial-data
+      author: ekaripov
+      changes:
+        - insert:
+            tableName: contact_type
+            columns:
+              - column:
+                  name: title
+                  value: "E-mail"
+        - insert:
+            columns:
+              - column:
+                  name: title
+                  value: Phone
+            tableName: contact_type
+        - insert:
+            columns:
+              - column:
+                  name: title
+                  value: Address
+            tableName: contact_type
+        - insert:
+            columns:
+              - column:
+                  name: title
+                  value: created
+              - column:
+                  name: show_in_list
+                  value: true
+            tableName: history_type
+        - insert:
+            columns:
+              - column:
+                  name: title
+                  value: deleted
+              - column:
+                  name: show_in_list
+                  value: true
+            tableName: history_type
+        - insert:
+            columns:
+              - column:
+                  name: title
+                  value: edited
+              - column:
+                  name: show_in_list
+                  value: true
+            tableName: history_type
+        - insert:
+            columns:
+              - column:
+                  name: title
+                  value: birthday
+              - column:
+                  name: show_in_list
+                  value: true
+            tableName: history_type
+        - insert:
+            columns:
+              - column:
+                  name: title
+                  value: incoming call
+              - column:
+                  name: show_in_list
+                  value: true
+            tableName: history_type
+        - insert:
+            columns:
+              - column:
+                  name: title
+                  value: outgoing call
+              - column:
+                  name: show_in_list
+                  value: true
+            tableName: history_type
+        - insert:
+            columns:
+              - column:
+                  name: title
+                  value: incoming email
+              - column:
+                  name: show_in_list
+                  value: true
+            tableName: history_type
+        - insert:
+            columns:
+              - column:
+                  name: title
+                  value: outgoing email
+              - column:
+                  name: show_in_list
+                  value: true
+            tableName: history_type
+        - insert:
+            columns:
+              - column:
+                  name: title
+                  value: personal appointment
+              - column:
+                  name: show_in_list
+                  value: true
+            tableName: history_type

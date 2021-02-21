@@ -1,17 +1,15 @@
 databaseChangeLog:
   - include:
       file: classpath:db/changelog/changelog-0.1.yaml
-#      file: src/main/resources/db/changelog/changelog-0.1.yaml
   - include:
       file: classpath:db/changelog/changelog-0.2.yaml
-#      file: src/main/resources/db/changelog/changelog-0.2.yaml
   - include:
       file: classpath:db/changelog//changelog-0.3.yaml
-#      file: src/main/resources/db/changelog//changelog-0.3.yaml
   - include:
       file: classpath:/db/changelog/changelog-0.4.yaml
   - include:
       file: classpath:/db/changelog/changelog-0.5.yaml
-#      file: src/main/resources//db/changelog/changelog-0.4.yaml
-#  - include:
-#      file: classpath:db/changelog/changelog-1.1.yaml
+  - include:
+      file: classpath:/db/changelog/changelog-1.1.yaml
+  - include:
+      file: classpath:/db/changelog/changelog-demodata.yaml
