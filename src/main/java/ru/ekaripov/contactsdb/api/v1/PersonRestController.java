@@ -11,6 +11,7 @@ import ru.ekaripov.contactsdb.model.dto.PersonDto;
 import ru.ekaripov.contactsdb.service.interf.PersonService;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 @RestController
@@ -34,8 +35,8 @@ public class PersonRestController {
 
     @GetMapping
     public ResponseEntity<List<PersonDto>> findBySearchString(@RequestParam(name = "s") Optional<String> searchString) {
-        return ResponseEntity.ok(searchString.map(s -> converter.convertToDto(service.findBySearchString(s)))
-                .orElseGet(() -> converter.convertToDto(service.getAllPerson())));
+        if (searchString.isEmpty()) return ResponseEntity.ok(converter.convertToDto(service.getAllPerson()));
+        return ResponseEntity.ok(converter.convertToDto(service.findBySearchString(searchString.get())));
     }
 
     @PostMapping

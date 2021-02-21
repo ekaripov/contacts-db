@@ -1,5 +1,6 @@
 package ru.ekaripov.contactsdb.model.converter.impl;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.ekaripov.contactsdb.model.Person;
 import ru.ekaripov.contactsdb.model.converter.EntityDtoConverter;
@@ -9,8 +10,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 @Component
+@AllArgsConstructor
 public class PersonDtoConverter implements EntityDtoConverter<Person, PersonDto> {
-    PersonCategoryDtoConverter personCategoryDtoConverter;
+    private final PersonCategoryDtoConverter personCategoryDtoConverter;
     @Override
     public PersonDto convertToDto(Person entity) {
         return PersonDto.builder()
