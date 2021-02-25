@@ -34,7 +34,7 @@ public class HistoryTypeServiceImpl implements HistoryTypeService {
     }
 
     @Override
-    public Optional<HistoryType> getHistoryTypeById(Long id) {
+    public Optional<HistoryType> getById(Long id) {
         return repository.findById(id);
     }
 }
