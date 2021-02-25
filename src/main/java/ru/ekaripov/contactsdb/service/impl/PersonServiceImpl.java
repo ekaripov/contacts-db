@@ -42,7 +42,7 @@ public class PersonServiceImpl implements PersonService {
         editPerson.setComment(person.getComment());
         editPerson.setPersonCategory(person.getPersonCategory());
         editPerson.setUpdated(LocalDate.now());
-        return repository.save(person);
+        return repository.save(editPerson);
     }
 
     @Override
