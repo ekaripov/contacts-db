@@ -1,0 +1,64 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-demo-data
+      author: ekaripov
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: title
+                  value: Scientist
+            schemaName: public
+            tableName: person_category
+        - insert:
+            columns:
+              - column:
+                  name: title
+                  value: Expert
+            schemaName: public
+            tableName: person_category
+        - insert:
+            columns:
+              - column:
+                  name: title
+                  value: Journalist
+            schemaName: public
+            tableName: person_category
+        - insert:
+            columns:
+              - column:
+                  name: first_name
+                  value: Mamon
+              - column:
+                  name: last_name
+                  value: Burov
+              - column:
+                  name: category_id
+                  value: 1
+              - column:
+                  name: created
+                  valueDate: 2020-02-21 12:00:00
+              - column:
+                  name: updated
+                  valueDate: 2020-02-21 12:00:00
+            schemaName: public
+            tableName: person
+        - insert:
+            columns:
+              - column:
+                  name: first_name
+                  value: Vasya
+              - column:
+                  name: last_name
+                  value: Pupkin
+              - column:
+                  name: category_id
+                  value: 2
+              - column:
+                  name: created
+                  valueDate: "2020-02-21 12:00:00"
+              - column:
+                  name: updated
+                  valueDate: "2020-02-21 12:00:00"
+            schemaName: public
+            tableName: person

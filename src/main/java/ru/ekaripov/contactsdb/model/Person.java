@@ -21,7 +21,7 @@ public class Person {
 
     @Column(name = "first_name")
     @Size(max = 50)
-    private String firstsName;
+    private String firstName;
 
     @Column(name = "middle_name")
     @Size(max = 50)
