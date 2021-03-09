@@ -11,7 +11,9 @@ import java.util.List;
 
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long> {
-    List<Event> findByPerson(Person person);
+    @Query("select e from Event e where e.person.id = ?1")
+    List<Event> findByPerson(Long personId);
+
     @Query(value = "SELECT * FROM events WHERE event_date BETWEEN " +
             "(CURRENT_DATE - interval '1' day) AND" +
             "(CURRENT_DATE + interval ':days' day)",

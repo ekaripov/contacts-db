@@ -56,8 +56,8 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public List<Event> findEventsByPerson(Person person) {
-        return repository.findByPerson(person);
+    public List<Event> findEventsByPersonId(Long personId) {
+        return repository.findByPerson(personId);
     }
 
     @Override

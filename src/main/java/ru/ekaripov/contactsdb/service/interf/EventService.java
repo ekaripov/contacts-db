@@ -14,6 +14,6 @@ public interface EventService {
     void deleteEventById(Long id);
     Optional<Event> findEventById(Long id);
     List<Event> getAllEvents();
-    List<Event> findEventsByPerson(Person person);
+    List<Event> findEventsByPersonId(Long personId);
     List<Event> findUpcomingEventsByDays(int days);
 }

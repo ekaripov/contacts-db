@@ -19,6 +19,7 @@ public class EventRestController {
 
     private final EventService service;
     private final EventDtoConverter converter;
+    private static final int DEFAULT_DAYS = 5;
 
     @GetMapping("/getAll")
     public ResponseEntity<List<EventDto>> getAllEvent() {
@@ -30,6 +31,17 @@ public class EventRestController {
         return service.findEventById(id)
                 .map(event -> ResponseEntity.ok(converter.convertToDto(event)))
                 .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping(value = {"/upcoming", "/upcoming/{days}"})
+    public ResponseEntity<List<EventDto>> findUpcomingEvents(@PathVariable(name = "days", required = false) Integer days){
+        int upcomingDays = (days == null) ? DEFAULT_DAYS : days;
+        return ResponseEntity.ok(converter.convertToDto(service.findUpcomingEventsByDays(days)));
+    }
+
+    @GetMapping("/person/{personId}")
+    public ResponseEntity<List<EventDto>> findEventsByPerson(@PathVariable(name="personId") Long personId){
+        return ResponseEntity.ok(converter.convertToDto(service.findEventsByPersonId(personId)));
     }
 
     @PostMapping
