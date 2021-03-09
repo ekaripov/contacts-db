@@ -1,5 +1,6 @@
 package ru.ekaripov.contactsdb.model.converter.impl;
 
+import org.springframework.stereotype.Component;
 import ru.ekaripov.contactsdb.model.HistoryType;
 import ru.ekaripov.contactsdb.model.converter.EntityDtoConverter;
 import ru.ekaripov.contactsdb.model.dto.HistoryTypeDto;
@@ -7,7 +8,7 @@ import ru.ekaripov.contactsdb.model.dto.HistoryTypeDto;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
+@Component
 public class HistoryTypeDtoConverter implements EntityDtoConverter<HistoryType, HistoryTypeDto> {
     @Override
     public HistoryTypeDto convertToDto(HistoryType entity) {
