@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long> {
-    @Query("select e from Event e where e.person.id = ?1")
+    @Query(value = "SELECT * FROM events WHERE person_id = ?1", nativeQuery = true)
     List<Event> findByPersonId(Long personId);
 
     @Query(value = "SELECT * FROM events WHERE event_date BETWEEN " +
