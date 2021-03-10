@@ -12,11 +12,11 @@ import java.util.List;
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long> {
     @Query("select e from Event e where e.person.id = ?1")
-    List<Event> findByPerson(Long personId);
+    List<Event> findByPersonId(Long personId);
 
     @Query(value = "SELECT * FROM events WHERE event_date BETWEEN " +
             "(CURRENT_DATE - interval '1' day) AND" +
-            "(CURRENT_DATE + interval ':days' day)",
+            "(CURRENT_DATE + interval '?1' day)",
             nativeQuery = true)
-    List<Event> findUpcomingEventsByDays(@Param("days") int days);
+    List<Event> findUpcomingEventsByDays(int days);
 }

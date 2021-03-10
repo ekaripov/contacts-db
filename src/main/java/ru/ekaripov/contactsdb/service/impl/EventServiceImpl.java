@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.ekaripov.contactsdb.exceptions.DatabaseEntryNotFoundException;
 import ru.ekaripov.contactsdb.exceptions.IdNotDefinedException;
 import ru.ekaripov.contactsdb.model.Event;
-import ru.ekaripov.contactsdb.model.Person;
 import ru.ekaripov.contactsdb.repository.EventRepository;
 import ru.ekaripov.contactsdb.service.interf.EventService;
 
@@ -57,7 +56,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public List<Event> findEventsByPersonId(Long personId) {
-        return repository.findByPerson(personId);
+        return repository.findByPersonId(personId);
     }
 
     @Override

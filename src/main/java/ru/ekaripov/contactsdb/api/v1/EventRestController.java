@@ -36,7 +36,7 @@ public class EventRestController {
     @GetMapping(value = {"/upcoming", "/upcoming/{days}"})
     public ResponseEntity<List<EventDto>> findUpcomingEvents(@PathVariable(name = "days", required = false) Integer days){
         int upcomingDays = (days == null) ? DEFAULT_DAYS : days;
-        return ResponseEntity.ok(converter.convertToDto(service.findUpcomingEventsByDays(days)));
+        return ResponseEntity.ok(converter.convertToDto(service.findUpcomingEventsByDays(upcomingDays)));
     }
 
     @GetMapping("/person/{personId}")

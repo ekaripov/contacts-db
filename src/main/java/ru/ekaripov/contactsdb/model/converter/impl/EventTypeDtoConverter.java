@@ -1,5 +1,6 @@
 package ru.ekaripov.contactsdb.model.converter.impl;
 
+import org.springframework.stereotype.Component;
 import ru.ekaripov.contactsdb.model.EventType;
 import ru.ekaripov.contactsdb.model.converter.EntityDtoConverter;
 import ru.ekaripov.contactsdb.model.dto.EventTypeDto;
@@ -7,7 +8,7 @@ import ru.ekaripov.contactsdb.model.dto.EventTypeDto;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
+@Component
 public class EventTypeDtoConverter implements EntityDtoConverter<EventType, EventTypeDto> {
     @Override
     public EventTypeDto convertToDto(EventType entity) {
