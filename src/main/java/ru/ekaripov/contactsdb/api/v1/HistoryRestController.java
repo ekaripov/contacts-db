@@ -5,9 +5,10 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import ru.ekaripov.contactsdb.exceptions.DatabaseEntryNotFoundException;
+import ru.ekaripov.contactsdb.exceptions.IdNotDefinedException;
+import ru.ekaripov.contactsdb.model.Event;
 import ru.ekaripov.contactsdb.model.History;
 import ru.ekaripov.contactsdb.model.converter.impl.HistoryDtoConverter;
 import ru.ekaripov.contactsdb.model.dto.HistoryDto;
@@ -20,7 +21,7 @@ import java.util.List;
 @AllArgsConstructor
 public class HistoryRestController {
 
-    private final HistoryService historyService;
+    private final HistoryService service;
 
     private final HistoryDtoConverter converter;
 
@@ -33,8 +34,35 @@ public class HistoryRestController {
             @ApiResponse(code = 404, message = "Not found!!!")
     })
     public ResponseEntity<List<HistoryDto>> getAllHistoryRecords() {
-        List<History> allHistoryRecords = historyService.getAllHistoryRecords();
+        List<History> allHistoryRecords = service.getAllHistoryRecords();
         List<HistoryDto> historyDtos = converter.convertToDto(allHistoryRecords);
         return ResponseEntity.ok(historyDtos);
+    }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<HistoryDto>> findHistoryByUserId(@PathVariable Long userId){
+        return ResponseEntity.ok(converter.convertToDto(service.findHistoryByUserId(userId)));
+    }
+
+    @GetMapping("/person/{personId}")
+    public ResponseEntity<List<HistoryDto>> findHistoryByPersonId(@PathVariable Long personId){
+        return ResponseEntity.ok(converter.convertToDto(service.findHistoryByPersonId(personId)));
+    }
+
+    @PostMapping
+    public ResponseEntity<HistoryDto> addHistory(@RequestBody History history){
+        history.setId(null);
+        return ResponseEntity.ok(converter.convertToDto(service.addHistory(history)));
+    }
+
+    @PostMapping("/event/{userId}")
+    public ResponseEntity<HistoryDto> addHistoryFromEvent(@RequestBody Event event, @PathVariable Long userId){
+        try{
+            return ResponseEntity.ok(converter.convertToDto(service.addHistoryFromEvent(event, userId)));
+        } catch (DatabaseEntryNotFoundException e){
+            return ResponseEntity.notFound().build();
+        } catch (IdNotDefinedException e){
+            return ResponseEntity.badRequest().build();
+        }
     }
 }
